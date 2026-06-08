@@ -8,9 +8,13 @@ export default defineConfig({
   plugins: [
     tanstackStart({
       srcDirectory: "./client/src",
+      // ⚠️ Don't specify server.entry or router.entry – let default Vercel adapter work
     }),
     react(),
     tsconfigPaths(),
     tailwindcss(),
   ],
+  build: {
+    outDir: ".vercel/output",   // ✅ Force output to .vercel/output
+  },
 });
