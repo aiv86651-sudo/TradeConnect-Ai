@@ -8,9 +8,14 @@ export default defineConfig({
   plugins: [
     tanstackStart({
       srcDirectory: "./client/src",
+      server: { entry: "server" },
+      router: { entry: "router" },
     }),
     react(),
     tsconfigPaths(),
     tailwindcss(),
   ],
+  build: {
+    outDir: ".netlify",   // ✅ Netlify ke liye output folder
+  },
 });

@@ -1,3 +1,18 @@
 [build]
   command = "pnpm run build"
-  publish = "dist/client"
+  publish = ".netlify/client"
+
+[functions]
+  directory = ".netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
