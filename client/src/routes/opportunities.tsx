@@ -282,12 +282,24 @@ function ReportView({
         <div className="flex flex-wrap gap-2 no-print">
           <Button onClick={onSave} size="sm" className="bg-navy text-navy-foreground hover:bg-navy/90"><Save className="size-4 mr-1.5" />Save</Button>
           <Button onClick={onDownload} size="sm" variant="outline"><Download className="size-4 mr-1.5" />Download</Button>
-          <Button asChild size="sm" variant="outline"><a
-            href={`/leads?country=${encodeURIComponent(
-              report.best_target_countries[0]
-            )}&sector=${encodeURIComponent(sector)}`}
-          ><Users className="size-4 mr-1.5" />Generate Leads</a></Button>
-          <Button asChild size="sm" variant="outline"><a href="/outreach"><Mail className="size-4 mr-1.5" />Outreach</a></Button>
+          <Button asChild size="sm" variant="outline">
+            <Link
+              to="/leads"
+              search={{
+                country: report.best_target_countries[0],
+                sector: sector,
+              }}
+            >
+              <Users className="size-4 mr-1.5" />
+              Generate Leads
+            </Link>
+          </Button>
+          <Button asChild size="sm" variant="outline">
+            <Link to="/outreach">
+              <Mail className="size-4 mr-1.5" />
+              Outreach
+            </Link>
+          </Button>
         </div>
       </div>
 

@@ -18,10 +18,23 @@ import { generatePreCallBrief } from "@/lib/ai";
 
 export const Route = createFileRoute("/leads")({
   head: () => ({ meta: [{ title: "Leads CRM — TradeConnect AI" }] }),
-  component: () => <AppLayout><LeadsPage /></AppLayout>,
+  validateSearch: (search: Record<string, unknown>): { country?: string; sector?: string } => {
+    return {
+      country: (search.country as string) || undefined,
+      sector: (search.sector as string) || undefined,
+    }
+  },
+  component: () => (
+    <AppLayout>
+      <LeadsPage />
+    </AppLayout>
+  ),
 });
 
 function LeadsPage() {
+  const { country: targetCountry = "United States", sector: targetSector = "Technology / IT" } = Route.useSearch();
+  const { user } = useAuth();
+
   const generateAILeads = async () => {
     const fakeLeads = [];
 
@@ -50,16 +63,7 @@ function LeadsPage() {
       load();
     }
   };
-  const params = new URLSearchParams(window.location.search);
 
-  const targetCountry =
-    params.get("country") || "United States";
-
-  const targetSector =
-    params.get("sector") || "Technology / IT";
-
-
-  const { user } = useAuth();
   const [leads, setLeads] = useState<any[]>([]);
   const [search, setSearch] = useState("");
   const [fStatus, setFStatus] = useState("all");
