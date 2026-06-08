@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm install --unsafe-perm && npm run build",
+  "installCommand": "npm install --unsafe-perm",
+  "framework": "vite",
+  "outputDirectory": "dist"
+}
