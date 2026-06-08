@@ -15,4 +15,8 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss(),
   ],
+  // Ensure Vercel output directory
+  build: {
+    outDir: ".vercel/output",
+  },
 });

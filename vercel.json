@@ -2,20 +2,5 @@
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
   "framework": "vite",
-  "outputDirectory": "dist/client",
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/server"
-    }
-  ],
-  "functions": {
-    "dist/server/server.js": {
-      "includeFiles": "dist/server/**"
-    }
-  }
+  "outputDirectory": ".vercel/output"
 }
