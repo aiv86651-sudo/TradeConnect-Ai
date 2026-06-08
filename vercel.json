@@ -2,5 +2,9 @@
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
   "framework": null,
-  "outputDirectory": "dist"
+  "outputDirectory": ".vercel/output",
+  "routes": [
+    { "src": "/_server/(.*)", "dest": "/.vercel/output/server/index.js" },
+    { "src": "/(.*)", "dest": "/.vercel/output/client/$1" }
+  ]
 }
