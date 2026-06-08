@@ -16,6 +16,6 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
-    outDir: ".netlify",   // ✅ Netlify ke liye output folder
+    outDir: ".vercel/output",   // ✅ Force output to .vercel/output for Vercel
   },
 });
