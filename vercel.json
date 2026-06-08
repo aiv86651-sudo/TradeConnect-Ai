@@ -1,6 +1,9 @@
 {
+  "version": 2,
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
+  "framework": "vite",
   "outputDirectory": ".vercel/output",
-  "framework": "vite"
+  "cleanUrls": true,
+  "trailingSlash": false
 }
