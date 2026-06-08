@@ -7,7 +7,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [
     tanstackStart({
+      srcDirectory: "./client/src",
       server: { entry: "server" },
+      router: { entry: "router" },
     }),
     react(),
     tsconfigPaths(),
