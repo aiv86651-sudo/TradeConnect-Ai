@@ -9,8 +9,8 @@ export const handleCall = async (req: Request, res: Response, next: NextFunction
       script: z.string(),
     }).parse(req.body);
 
-    const call = await callService.makeCall(phone, script);
-    res.json({ success: true, callSid: call.sid });
+    const callResult: any = await callService.makeCall(phone, script);
+    res.json({ success: true, callSid: callResult.sid });
   } catch (error) {
     next(error);
   }
