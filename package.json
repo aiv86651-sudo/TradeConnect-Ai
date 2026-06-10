@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "cd frontend && pnpm build",
+    "start": "cd backend && node dist/server.js",
     "dev:frontend": "cd frontend && pnpm dev",
     "dev:backend": "cd backend && pnpm dev"
   },
