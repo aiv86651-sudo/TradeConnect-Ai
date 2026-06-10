@@ -1,4 +1,5 @@
-import { Resend } from 'resend';
+import * as ResendModule from 'resend';
+const { Resend } = ResendModule;
 import { config } from '../config';
 
 const resend = config.resend.apiKey ? new Resend(config.resend.apiKey) : null;
