@@ -1,6 +1,7 @@
-import * as ResendModule from 'resend';
-const { Resend } = ResendModule;
 import { config } from '../config';
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { Resend } = require('resend');
 
 const resend = config.resend.apiKey ? new Resend(config.resend.apiKey) : null;
 
