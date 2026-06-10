@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run build",
+  "buildCommand": "cd frontend && pnpm build",
   "installCommand": "pnpm install",
   "framework": "vite",
-  "outputDirectory": ".vercel/output",
+  "outputDirectory": "frontend/dist",
   "cleanUrls": true,
   "trailingSlash": false
 }
