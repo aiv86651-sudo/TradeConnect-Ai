@@ -1,20 +1,33 @@
 import { config } from '../config/index.js';
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { Resend } = require('resend');
-
-const resend = config.resend.apiKey ? new Resend(config.resend.apiKey) : null;
+const resend = config.resend.apiKey ? {
+  apiKey: config.resend.apiKey,
+  fromEmail: config.resend.fromEmail,
+} : null;
 
 export const sendEmail = async (to: string, subject: string, html: string) => {
   if (!resend) {
     throw new Error('Resend API key is missing. Please configure it in the .env file.');
   }
-  
-  const result = await resend.emails.send({
-    from: config.resend.fromEmail,
-    to,
-    subject,
-    html: `<div style="font-family: Arial; line-height:1.6">${html.replace(/\n/g, "<br>")}</div>`,
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${resend.apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: resend.fromEmail,
+      to,
+      subject,
+      html: `<div style="font-family: Arial; line-height:1.6">${html.replace(/\n/g, "<br>")}</div>`,
+    }),
   });
-  return result;
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Resend API error: ${error}`);
+  }
+
+  return response.json();
 };
