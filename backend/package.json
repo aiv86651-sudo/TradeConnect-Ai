@@ -1,12 +1,11 @@
 {
   "name": "outreach-platform-server",
   "version": "1.0.0",
-  "type": "commonjs",
-  "main": "server.ts",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "ts-node --project tsconfig.json server.ts",
-    "dev": "nodemon --watch '**/*.ts' --exec \"ts-node --project tsconfig.json\" server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch '**/*.ts' --exec ts-node server.ts"
   },
   "dependencies": {
     "express": "^4.21.2",
