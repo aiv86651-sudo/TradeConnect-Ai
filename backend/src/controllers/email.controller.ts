@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
-import * as emailService from '../services/email.service';
+import * as emailService from '../services/email.service.js';
 
 export const handleEmail = async (req: Request, res: Response, next: NextFunction) => {
   try {

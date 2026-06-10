@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
-import * as callService from '../services/call.service';
+import * as callService from '../services/call.service.js';
 
 export const handleCall = async (req: Request, res: Response, next: NextFunction) => {
   try {

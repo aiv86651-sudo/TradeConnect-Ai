@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import routes from './routes';
-import { errorHandler } from './middleware/errorHandler';
+import routes from './routes/index.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/api', routes);
 
 // Service status check
-import { config } from './config';
+import { config } from './config/index.js';
 console.log('--- Service Status ---');
 console.log(`Twilio: ${config.twilio.accountSid ? '✅ Configured' : '❌ Missing'}`);
 console.log(`Resend: ${config.resend.apiKey ? '✅ Configured' : '❌ Missing'}`);

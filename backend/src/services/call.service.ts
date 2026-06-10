@@ -1,5 +1,5 @@
 import twilio from 'twilio';
-import { config } from '../config';
+import { config } from '../config/index.js';
 
 const client = (config.twilio.accountSid && config.twilio.authToken) 
   ? twilio(config.twilio.accountSid, config.twilio.authToken) 

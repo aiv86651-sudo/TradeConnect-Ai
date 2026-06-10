@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import callRoutes from './call.routes';
-import emailRoutes from './email.routes';
+import callRoutes from './call.routes.js';
+import emailRoutes from './email.routes.js';
 
 const router = Router();
 

@@ -1,4 +1,4 @@
-import { config } from '../config';
+import { config } from '../config/index.js';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { Resend } = require('resend');
